@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Oswald", sans-serif;
+  background: var(--secondary-color);
+  color: var(--main-color);
 }
 
 a {
@@ -15,12 +19,16 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+:root {
+  --main-color: #333333;
+  --secondary-color: #ffffff;
+  --accent: rgb(177, 3, 3);
 }
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #ffffff;
+    --secondary-color: #333333;
+    --accent: rgb(177, 3, 3);
+  }
+} */
