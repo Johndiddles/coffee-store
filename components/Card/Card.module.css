@@ -1,0 +1,39 @@
+.cardLink {
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.cardDetails {
+  height: fit-content;
+  position: relative;
+}
+
+.cardImageWrapper {
+  display: flex;
+}
+
+.cardHeaderWrapper {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  padding: 0 2rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  height: 0;
+  opacity: 0.5;
+  transition: 0.4s ease-in-out;
+}
+
+.cardLink:hover .cardHeaderWrapper {
+  opacity: 1;
+  height: 5rem;
+  padding: 1rem 2rem;
+}
+
+.cardHeader {
+  color: white;
+}

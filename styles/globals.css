@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
 
@@ -6,8 +10,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Oswald", sans-serif;
-  background: var(--secondary-color);
+  background: url(/static/whiteCoffee.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--main-color);
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 a {
@@ -17,7 +25,23 @@ a {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+/* 
+.glass {
+  display: block;
+  width: fit-content; 
+  background: rgba(177, 3, 3, 0.75);
+  border-radius: 1rem;
+  backdrop-filter: blur(20px);
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+.glass:hover {
+  background: rgba(177, 3, 3, 9);
+} */
 
 :root {
   --main-color: #333333;
