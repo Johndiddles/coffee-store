@@ -30,7 +30,14 @@ const Card = (props) => {
             />
           </div>
           <div className={styles.cardHeaderWrapper}>
-            <h2 className={styles.cardHeader}>{store?.name}</h2>
+            <h2
+              className={cls(
+                "text-lg font-semibold text-gray-50",
+                styles.cardHeader
+              )}
+            >
+              {store?.name}
+            </h2>
           </div>
         </div>
       </a>
