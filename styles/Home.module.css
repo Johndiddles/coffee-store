@@ -1,7 +1,7 @@
 .cardLayout {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4rem;
   justify-content: space-around;
   padding: 2rem 5rem;
 }

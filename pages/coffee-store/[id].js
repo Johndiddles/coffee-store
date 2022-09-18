@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +10,8 @@ import { fetchCoffeeStores } from "../../lib/coffee-stores";
 import { BiArrowBack } from "react-icons/bi";
 import cls from "classnames";
 import styles from "../../styles/singleCoffee.module.css";
+import { StoreContext } from "../../store/storeContext";
+import { isEmpty } from "../../utils";
 
 export async function getStaticProps(staticProps) {
   const params = staticProps.params;
@@ -42,15 +44,35 @@ export async function getStaticPaths() {
   };
 }
 
-const SingleCoffeeStore = (props) => {
+const SingleCoffeeStore = (initialProps) => {
+  // console.log(initialProps);
   const router = useRouter();
+  const id = router.query.id;
+
+  const [coffeeStore, setCoffeeStore] = useState(initialProps.coffeeStore);
+
+  const {
+    state: { coffeeStores },
+  } = useContext(StoreContext);
+
+  useEffect(() => {
+    if (isEmpty(coffeeStore)) {
+      const findCoffeeStoreById = coffeeStores.find(
+        (coffeeStore) => coffeeStore.fsq_id === id
+      );
+
+      setCoffeeStore(findCoffeeStoreById);
+    }
+  }, [id, coffeeStore, coffeeStores]);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  const { name, location, imageUrl } = props.coffeeStore;
+  const { name, location, imageUrl } = coffeeStore;
   const { address, neighborhood } = location || {};
+
+  console.log({ coffeeStore });
 
   return (
     <div
@@ -81,14 +103,16 @@ const SingleCoffeeStore = (props) => {
       </div>
 
       <div className="w-1/2 flex flex-col gap-4 justify-start">
-        <div className="bg-white bg-opacity-60 text-slate-800 text-lg font-semibold w-96 p-8 rounded-2xl flex flex-col gap-4">
+        <div className="bg-white bg-opacity-30 backdrop-blur-sm text-slate-800 text-lg font-semibold w-96 p-8 rounded-2xl flex flex-col gap-4">
           <div className="flex flex-col gap-4">
-            <p className="flex gap-4 items-center">
-              <span>
-                <MdLocationOn />
-              </span>
-              {address}
-            </p>
+            {address && (
+              <p className="flex gap-4 items-center">
+                <span>
+                  <MdLocationOn />
+                </span>
+                {address}
+              </p>
+            )}
             {neighborhood && (
               <p className="flex gap-4 items-center">
                 {" "}

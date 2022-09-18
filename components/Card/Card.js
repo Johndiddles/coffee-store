@@ -3,22 +3,34 @@ import Link from "next/link";
 import styles from "./Card.module.css";
 import cls from "classnames";
 
+console.log({ styles });
 const Card = (props) => {
+  const { store } = props;
   return (
-    <Link href={props.href}>
-      <a className={cls("glass", styles.cardLink)}>
+    <Link href={`/coffee-store/${store?.fsq_id}`}>
+      <a
+        className={cls(
+          "glass bg-gray-100 bg-opacity-90 backdrop-blur-lg w-[360px] ",
+          styles.cardLink
+        )}
+      >
+        <h2 className="text-2xl font-semibold text-gray-700 py-4 px-8">
+          {store?.name?.length > 17
+            ? `${store?.name?.slice(0, 17)}...`
+            : store?.name}
+        </h2>
         <div className={styles.cardDetails}>
           <div className={styles.cardImageWrapper}>
             <Image
-              className={styles.cardImage}
-              src={props.imageUrl}
+              className="rounded-t-2xl"
+              src={store?.imageUrl}
               width={360}
-              height={240}
+              height={200}
               alt="card"
             />
           </div>
           <div className={styles.cardHeaderWrapper}>
-            <h2 className={styles.cardHeader}>{props.name}</h2>
+            <h2 className={styles.cardHeader}>{store?.name}</h2>
           </div>
         </div>
       </a>

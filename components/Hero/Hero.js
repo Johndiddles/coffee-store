@@ -17,7 +17,12 @@ const Hero = ({
           <h1 className={cls("font-bold", styles.title)}>
             <span className={styles.title1}>Coffee</span> Time
           </h1>
-          <p className={cls("font-medium text-lg", styles.subTitle)}>
+          <p
+            className={cls(
+              "font-medium text-lg text-gray-700",
+              styles.subTitle
+            )}
+          >
             Find coffee shops around you
           </p>
           <button
